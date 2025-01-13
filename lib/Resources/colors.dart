@@ -8,7 +8,7 @@ class LColor {
   static const Color primary = Color(0xFF1685B1);
   static const Color primaryAccent = Color(0xFFB9EBFF);
   static const Color card = Color(0xFFE7E7E7);
-  static const Color border = Color(0xFF474747);
+  static const Color border = Color(0xFFD4D4D4);
   static const Color fadeText = Color(0xFF9C9C9C);
 }
 
