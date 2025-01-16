@@ -13,7 +13,7 @@ class RootUI extends StatefulWidget {
   State<RootUI> createState() => _RootUIState();
 }
 
-class _RootUIState extends State<RootUI> {
+class _RootUIState extends State<RootUI> with WindowListener {
   List<Map<String, dynamic>> screens = [
     {
       "name": "Home",
@@ -26,6 +26,19 @@ class _RootUIState extends State<RootUI> {
       "screen": ItemsUI(),
     }
   ];
+
+  @override
+  void initState() {
+    windowManager.addListener(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    windowManager.removeListener(this);
+
+    super.dispose();
+  }
 
   @override
   void onWindowClose() async {
@@ -67,7 +80,9 @@ class _RootUIState extends State<RootUI> {
           automaticallyImplyLeading: false,
           // title: Label('Invoice system', fontWeight: 800).title,
           title: DragToMoveArea(
-            child: Label("Invoice Generator").title,
+            child: SizedBox(
+                width: double.infinity,
+                child: Label("Invoice Generator").title),
           ),
           actions: WindowButtons(),
         ),
